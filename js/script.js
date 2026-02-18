@@ -100,7 +100,7 @@ function handleFormSubmit(event) {
 document.addEventListener('click', function(event) {
     const menu = document.getElementById('dropdownMenu');
     const toggle = document.querySelector('.menu-toggle');
-   
+    if (!menu || !toggle) return;
     if (!menu.contains(event.target) && !toggle.contains(event.target)) {
         menu.classList.remove('active');
     }
