@@ -133,15 +133,15 @@ function openReader(magazineIndex) {
             width: isVolume8 ? 2550 : 850,
             height: isVolume8 ? 3300 : 1100,
             size: 'stretch',
-            minWidth: 315,
+            minWidth: 100,
             maxWidth: 2550,
-            minHeight: 400,
+            minHeight: 150,
             maxHeight: 3300,
             showCover: true,
             mobileScrollSupport: false,
             swipeDistance: 30,
             clickEventForward: true,
-            usePortrait: true,
+            usePortrait: false,
             startPage: 0,
             drawShadow: true,
             flippingTime: 600,
@@ -278,4 +278,34 @@ const observer = new MutationObserver(function(mutations) {
         }
     });
 });
-observer.observe(document.getElementById('readerOverlay'), { attributes: true });// JavaScript Document
+observer.observe(document.getElementById('readerOverlay'), { attributes: true });
+
+// Tap-to-flip for mobile: tap right half = next page, tap left half = previous page
+(function () {
+    let startX = 0, startY = 0, startTime = 0;
+    const overlay = document.getElementById('readerOverlay');
+
+    overlay.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+    }, { passive: true });
+
+    overlay.addEventListener('touchend', function (e) {
+        if (!pageFlip) return;
+        // Don't intercept taps on buttons or links (close, nav, zoom)
+        if (e.target.closest('button, a')) return;
+        const t = e.changedTouches[0];
+        const dx = Math.abs(t.clientX - startX);
+        const dy = Math.abs(t.clientY - startY);
+        const dt = Date.now() - startTime;
+        // Only act on short taps with minimal movement (not swipes)
+        if (dx < 20 && dy < 20 && dt < 300) {
+            if (t.clientX > window.innerWidth / 2) {
+                pageFlip.flipNext();
+            } else {
+                pageFlip.flipPrev();
+            }
+        }
+    }, { passive: true });
+}());
