@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDITORIA - Magazine Reader</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/ARCHTRAITS LOGO B.png" alt="ARCHTRAITS Logo" class="logo-img">
+        </div>
+
+        <nav class="main-nav">
+            <button class="nav-link" onclick="handleMenuClick('Portfolio')">Portfolio</button>
+            <button class="nav-link" onclick="handleMenuClick('Magazines')">Magazines</button>
+            <button class="nav-link" onclick="handleMenuClick('Contact')">Contact</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Portfolio Page -->
+        <section id="portfolioPage" class="portfolio-page">
+            <div class="portfolio-editorial">
+                <div class="port-img p1">
+                    <img src="images/portfolio/P1 (2).jpg" alt="P1">
+                </div>
+                <div class="p1-label">
+                    <div><strong>Little Island,</strong></div>
+                    <div>New York</div>
+                </div>
+                <div class="port-img p2" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="port-img p3" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="port-img p4" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                <div class="port-img p5" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <div class="port-img p6" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                <div class="port-img p7" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);"></div>
+                <div class="port-img p8" style="background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);"></div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contactPage" class="contact-page" style="display: none;">
+            <div class="contact-form-wrapper">
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group form-name-row">
+                        <div class="form-field">
+                            <label class="form-label">Name <span class="form-required">(required)</span><br><span class="form-sublabel">First Name</span></label>
+                            <input type="text" name="firstName" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label form-label-right"><span class="form-sublabel">Last Name</span></label>
+                            <input type="text" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <label class="form-label">Email <span class="form-required">(required)</span></label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-field">
+                            <label class="form-label">Message <span class="form-required">(required)</span></label>
+                            <textarea name="message" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-submit-row">
+                        <button type="submit" class="form-submit">Submit</button>
+                    </div>
+                    <div class="form-social">
+                        <a href="https://www.instagram.com/archtraits" target="_blank" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <circle cx="12" cy="12" r="4"/>
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Magazines Page -->
+        <section id="magazinesPage" class="magazines-page" style="display: none;">
+            <h1>Capturing the beauty of architecture and the essence of human experience.</h1>
+            <div class="magazine-grid">
+            <!-- Volume 8 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-8" onclick="openReader(7)">
+                    <img src="images/ARCHTRAITS VOL 8 (1).jpg" alt="Volume 8" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Giada Belleudi</h2>
+                    <p class="magazine-issue">Parco della Musica</p>
+                </div>
+            </div>
+
+            <!-- Volume 7 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-7" onclick="openReader(6)">
+                    <img src="images/ARCHTRAITS VOL 7 (1).jpg" alt="Volume 7" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Meli Ardila</h2>
+                    <p class="magazine-issue">FIU SOA</p>
+                </div>
+            </div>
+
+            <!-- Volume 6 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-6" onclick="openReader(5)">
+                    <img src="images/ARCHTRAITS VOL 6 (1).jpg" alt="Volume 6" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Hera Sisi</h2>
+                    <p class="magazine-issue">Harpa Concert Hall</p>
+                </div>
+            </div>
+
+            <!-- Volume 5 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-5" onclick="openReader(4)">
+                    <img src="images/ARCHTRAITS VOL 5 (1).jpg" alt="Volume 5" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Kayli Fisher</h2>
+                    <p class="magazine-issue">Winter Park Library</p>
+                </div>
+            </div>
+
+            <!-- Volume 4 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-4" onclick="openReader(3)">
+                    <img src="images/ARCHTRAITS VOL 4 (1).jpg" alt="Volume 4" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Mackenzie Ryan</h2>
+                    <p class="magazine-issue">New World Center</p>
+                </div>
+            </div>
+
+            <!-- Volume 3 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-3" onclick="openReader(2)">
+                    <img src="images/ARCHTRAITS VOL 3 (1).jpg" alt="Volume 3" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Ana Mendez</h2>
+                    <p class="magazine-issue">Innovation, Science, and Technology Building</p>
+                </div>
+            </div>
+
+            <!-- Volume 2 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-2" onclick="openReader(1)">
+                    <img src="images/ARCHTRAITS VOL 2 (1).jpg" alt="Volume 2" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Constanza Cescato</h2>
+                    <p class="magazine-issue">Museum Garage</p>
+                </div>
+            </div>
+
+            <!-- Volume 1 -->
+            <div class="magazine-card">
+                <div class="magazine-cover cover-placeholder-1" onclick="openReader(0)">
+                    <img src="images/ARCHTRAITS VOL 1 (1).jpg" alt="Volume 1" class="cover-image">
+                </div>
+                <div class="magazine-info">
+                    <h2 class="magazine-title">Molly Peyton</h2>
+                    <p class="magazine-issue">1111 Lincoln Road</p>
+                </div>
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <!-- Book Reader Modal -->
+    <div class="reader-overlay" id="readerOverlay">
+        <div class="reader-container">
+            <button class="close-reader" onclick="closeReader()">×</button>
+
+            <div id="flipbook-container">
+                <div id="bookSpread"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
