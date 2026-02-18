@@ -129,6 +129,7 @@ function openReader(magazineIndex) {
 
         // Initialize PageFlip
         const isVolume8 = magazineIndex === 7;
+        const isMobile = window.innerWidth <= 768;
         pageFlip = new St.PageFlip(container, {
             width: isVolume8 ? 2550 : 850,
             height: isVolume8 ? 3300 : 1100,
@@ -144,7 +145,7 @@ function openReader(magazineIndex) {
             usePortrait: false,
             startPage: 0,
             drawShadow: true,
-            flippingTime: 600,
+            flippingTime: isMobile ? 1000 : 600,
             useMouseEvents: true,
             autoSize: true,
             maxShadowOpacity: 0.5,
