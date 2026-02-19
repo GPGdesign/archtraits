@@ -605,18 +605,29 @@ h1 {
 
     /* Portfolio - preserve desktop layout on mobile */
     .editorial-scroll {
-        gap: 2.5rem;
+        gap: 1rem;
     }
 
     .ed-row {
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         gap: 0.6rem;
+        margin-top: 0 !important;
+    }
+
+    .ed-label {
+        font-size: 0.6rem !important;
+        letter-spacing: 0.01em !important;
     }
 
     .ed-img {
         width: var(--ed-w, 100%) !important;
         flex-shrink: 0 !important;
+    }
+
+    .ed-ar {
+        height: auto !important;
+        aspect-ratio: var(--ar) !important;
     }
 
     /* Magazines */
