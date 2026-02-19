@@ -79,8 +79,36 @@ function handleMenuClick(item) {
     const target = sections[item];
     if (target) {
         target.classList.add('active-section');
+
+        if (item === 'Portfolio') {
+            initPortfolioObserver();
+        }
     }
 }
+
+function initPortfolioObserver() {
+    const rows = document.querySelectorAll('.editorial-scroll .ed-row');
+    rows.forEach(row => {
+        row.classList.remove('ed-visible');
+        row.style.transitionDelay = '0s';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top);
+
+        visible.forEach((entry, i) => {
+            entry.target.style.transitionDelay = (i * 0.12) + 's';
+            entry.target.classList.add('ed-visible');
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.08 });
+
+    rows.forEach(row => observer.observe(row));
+}
+
+initPortfolioObserver();
 
 function handleFormSubmit(event) {
     event.preventDefault();
@@ -148,7 +176,7 @@ function openReader(magazineIndex) {
             usePortrait: false,
             startPage: 0,
             drawShadow: true,
-            flippingTime: isMobile ? 1000 : 600,
+            flippingTime: isMobile ? 1800 : 600,
             useMouseEvents: true,
             autoSize: true,
             maxShadowOpacity: 0.5,

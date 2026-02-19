@@ -57,7 +57,7 @@ header {
     background: none;
     border: none;
     font-family: 'sofia-pro', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 400;
     color: var(--text-primary);
     cursor: pointer;
@@ -96,6 +96,15 @@ main {
 .portfolio-page {
     width: 100%;
     padding-top: 1rem;
+}
+
+.editorial-scroll .ed-row {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.editorial-scroll .ed-row.ed-visible {
+    opacity: 1;
 }
 
 .editorial-scroll {
@@ -583,21 +592,34 @@ h1 {
 @media (max-width: 768px) {
     /* Header */
     header {
-        padding: 0.9rem 1.2rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0.7rem 1rem !important;
+        gap: 1.2rem !important;
+    }
+
+    .logo {
+        flex-shrink: 0 !important;
     }
 
     .logo-img {
-        height: 28px;
+        height: 24px !important;
+        max-width: 160px !important;
+        object-fit: contain !important;
     }
 
     .main-nav {
-        gap: 0.8rem;
+        gap: 0.5rem !important;
+        flex-shrink: 0 !important;
+        flex-direction: row !important;
+        display: flex !important;
     }
 
     .nav-link {
-        font-size: 0.8rem;
+        font-size: 0.65rem !important;
     }
 
     /* Main */
@@ -651,8 +673,8 @@ h1 {
     }
 
     h1 {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
     }
 
     /* Contact form - stack name fields */
