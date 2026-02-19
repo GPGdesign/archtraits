@@ -68,20 +68,17 @@ function toggleMenu() {
 }
 
 function handleMenuClick(item) {
-    const portfolioPage = document.getElementById('portfolioPage');
-    const magazinesPage = document.getElementById('magazinesPage');
-    const contactPage = document.getElementById('contactPage');
+    const sections = {
+        Portfolio: document.getElementById('portfolioPage'),
+        Magazines: document.getElementById('magazinesPage'),
+        Contact: document.getElementById('contactPage')
+    };
 
-    portfolioPage.style.display = 'none';
-    magazinesPage.style.display = 'none';
-    contactPage.style.display = 'none';
+    Object.values(sections).forEach(s => s.classList.remove('active-section'));
 
-    if (item === 'Portfolio') {
-        portfolioPage.style.display = 'block';
-    } else if (item === 'Magazines') {
-        magazinesPage.style.display = 'block';
-    } else if (item === 'Contact') {
-        contactPage.style.display = 'block';
+    const target = sections[item];
+    if (target) {
+        target.classList.add('active-section');
     }
 }
 
@@ -123,7 +120,13 @@ function openReader(magazineIndex) {
         magazine.pages.forEach((imagePath, index) => {
             const pageDiv = document.createElement('div');
             pageDiv.className = 'page';
-            pageDiv.innerHTML = `<img src="${imagePath}" alt="Page ${index + 1}" style="width: 100%; height: 100%; object-fit: cover;">`;
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = `Page ${index + 1}`;
+            img.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
+            img.decoding = 'async';
+            if (index > 3) img.loading = 'lazy';
+            pageDiv.appendChild(img);
             container.appendChild(pageDiv);
         });
 
