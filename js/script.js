@@ -76,6 +76,8 @@ function handleMenuClick(item) {
 
     Object.values(sections).forEach(s => s.classList.remove('active-section'));
 
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
     const target = sections[item];
     if (target) {
         target.classList.add('active-section');

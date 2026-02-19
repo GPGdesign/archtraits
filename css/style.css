@@ -129,6 +129,11 @@ main {
 .ed-img {
     width: var(--ed-w, 100%);
     flex-shrink: 0;
+    background-color: #f0eeeb;
+}
+
+.ed-ar {
+    background-color: #f0eeeb;
 }
 
 .ed-img img {
