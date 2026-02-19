@@ -419,15 +419,15 @@ h1 {
     color: white;
 }
 
-/* Placeholder gradient backgrounds for covers without images */
-.cover-placeholder-1 { background: linear-gradient(135deg, #2d3436 0%, #000000 100%); }
-.cover-placeholder-2 { background: linear-gradient(135deg, #b8860b 0%, #8b6914 100%); }
-.cover-placeholder-3 { background: linear-gradient(135deg, #1e3a5f 0%, #0f1f38 100%); }
-.cover-placeholder-4 { background: linear-gradient(135deg, #6a4c3a 0%, #3d2817 100%); }
-.cover-placeholder-5 { background: linear-gradient(135deg, #2c5f2d 0%, #1a3a1b 100%); }
-.cover-placeholder-6 { background: linear-gradient(135deg, #7f3f3f 0%, #5a2828 100%); }
-.cover-placeholder-7 { background: linear-gradient(135deg, #483d8b 0%, #2e2563 100%); }
-.cover-placeholder-8 { background: linear-gradient(135deg, #556b2f 0%, #3a4a1f 100%); }
+/* Placeholder backgrounds matching each volume's logo color */
+.cover-placeholder-1 { background: #1a1a1a; }           /* Vol 1 — black */
+.cover-placeholder-2 { background: #e8b83a; }           /* Vol 2 — golden yellow */
+.cover-placeholder-3 { background: #2e5c40; }           /* Vol 3 — forest green */
+.cover-placeholder-4 { background: #e01a4f; }           /* Vol 4 — hot pink */
+.cover-placeholder-5 { background: #72c8e0; }           /* Vol 5 — cyan blue */
+.cover-placeholder-6 { background: #1a1a1a; }           /* Vol 6 — black */
+.cover-placeholder-7 { background: #991a1a; }           /* Vol 7 — dark crimson */
+.cover-placeholder-8 { background: #7aaabf; }           /* Vol 8 — steel blue */
 
 /* Contact Page */
 .contact-page {
