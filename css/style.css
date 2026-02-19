@@ -294,6 +294,8 @@ h1 {
 .page {
     background: white;
     overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .page img {
@@ -634,6 +636,18 @@ h1 {
     .magazine-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .magazine-info {
+        margin-top: 0.5rem;
+    }
+
+    .magazine-title {
+        font-size: 0.85rem;
+    }
+
+    .magazine-issue {
+        font-size: 0.65rem;
     }
 
     h1 {

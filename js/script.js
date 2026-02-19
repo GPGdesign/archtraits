@@ -124,8 +124,8 @@ function openReader(magazineIndex) {
             img.src = imagePath;
             img.alt = `Page ${index + 1}`;
             img.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
-            img.decoding = 'async';
-            if (index > 3) img.loading = 'lazy';
+            img.decoding = 'sync';
+            img.loading = 'eager';
             pageDiv.appendChild(img);
             container.appendChild(pageDiv);
         });
