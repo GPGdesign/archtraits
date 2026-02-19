@@ -600,21 +600,23 @@ h1 {
 
     /* Main */
     main {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 0.5rem;
     }
 
-    /* Portfolio - stack single column on mobile */
+    /* Portfolio - preserve desktop layout on mobile */
     .editorial-scroll {
         gap: 2.5rem;
     }
 
     .ed-row {
-        flex-direction: column;
-        gap: 2.5rem;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 0.6rem;
     }
 
     .ed-img {
-        width: 100% !important;
+        width: var(--ed-w, 100%) !important;
+        flex-shrink: 0 !important;
     }
 
     /* Magazines */
