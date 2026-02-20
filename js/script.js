@@ -1,3 +1,26 @@
+// Loading screen — show for at least 1.2s, then fade out
+(function () {
+    const loader = document.getElementById('loader');
+    const startTime = Date.now();
+    const minDisplay = 2000;
+
+    window.addEventListener('load', function () {
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, minDisplay - elapsed);
+        setTimeout(function () {
+            // Step 1: fade the logo out
+            const logo = document.getElementById('loader-logo');
+            logo.style.transition = 'opacity 0.4s ease';
+            logo.style.opacity = '0';
+            // Step 2: 0.4s later, fade the black screen
+            setTimeout(function () {
+                loader.classList.add('fade-out');
+                setTimeout(function () { loader.remove(); }, 800);
+            }, 400);
+        }, remaining);
+    });
+}());
+
 let currentMagazine = 0;
 let zoomLevel = 1;
 let pageFlip = null;

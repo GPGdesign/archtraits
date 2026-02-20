@@ -589,6 +589,34 @@ h1 {
     font-family: 'sofia-pro', sans-serif;
 }
 
+/* Loading screen */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease;
+}
+
+#loader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes revealLTR {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+}
+
+#loader-logo {
+    height: 65px;
+    width: auto;
+    animation: revealLTR 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .magazine-grid {
@@ -685,6 +713,8 @@ h1 {
     }
 
     .mobile-br { display: inline; }
+
+    #loader-logo { height: 26px; }
 
     /* Contact form - stack name fields */
     .form-name-row {
