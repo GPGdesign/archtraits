@@ -134,16 +134,27 @@ document.addEventListener('click', function(event) {
 });
 
 function openReader(magazineIndex) {
+    // Destroy existing PageFlip instance
+    if (pageFlip) {
+        pageFlip.destroy();
+        pageFlip = null;
+    }
+
     currentMagazine = magazineIndex;
     const overlay = document.getElementById('readerOverlay');
-    const container = document.getElementById('bookSpread');
+    const flipbookContainer = document.getElementById('flipbook-container');
     const magazine = magazines[magazineIndex];
 
-    overlay.classList.add('active');
-    zoomLevel = 1;
+    // Replace the bookSpread element entirely so PageFlip has a clean slate
+    // (destroy() leaves internal wrapper elements behind that corrupt reinit)
+    const oldSpread = document.getElementById('bookSpread');
+    if (oldSpread) oldSpread.remove();
+    const container = document.createElement('div');
+    container.id = 'bookSpread';
+    flipbookContainer.appendChild(container);
 
-    // Clear previous content
-    container.innerHTML = '';
+    zoomLevel = 1;
+    flipbookContainer.style.transform = '';
 
     // Create pages
     if (magazine.pages && magazine.pages.length > 0) {
@@ -160,40 +171,42 @@ function openReader(magazineIndex) {
             container.appendChild(pageDiv);
         });
 
-        // Initialize PageFlip
-        const isVolume8 = magazineIndex === 7;
-        const isMobile = window.innerWidth <= 768;
-        pageFlip = new St.PageFlip(container, {
-            width: isVolume8 ? 2550 : 850,
-            height: isVolume8 ? 3300 : 1100,
-            size: 'stretch',
-            minWidth: 100,
-            maxWidth: 2550,
-            minHeight: 150,
-            maxHeight: 3300,
-            showCover: true,
-            mobileScrollSupport: false,
-            swipeDistance: 30,
-            clickEventForward: true,
-            usePortrait: false,
-            startPage: 0,
-            drawShadow: true,
-            flippingTime: isMobile ? 1800 : 600,
-            useMouseEvents: true,
-            autoSize: true,
-            maxShadowOpacity: 0.5,
-            showPageCorners: true,
-            disableFlipByClick: false
-        });
+        setTimeout(() => {
+            const isVolume8 = magazineIndex === 7;
+            const isMobile = window.innerWidth <= 768;
+            pageFlip = new St.PageFlip(container, {
+                width: isVolume8 ? 2550 : 850,
+                height: isVolume8 ? 3300 : 1100,
+                size: 'stretch',
+                minWidth: 100,
+                maxWidth: 2550,
+                minHeight: 150,
+                maxHeight: 3300,
+                showCover: true,
+                mobileScrollSupport: false,
+                swipeDistance: 30,
+                clickEventForward: true,
+                usePortrait: false,
+                startPage: 0,
+                drawShadow: true,
+                flippingTime: isMobile ? 1800 : 600,
+                useMouseEvents: true,
+                autoSize: true,
+                maxShadowOpacity: 0.5,
+                showPageCorners: true,
+                disableFlipByClick: false
+            });
 
-        pageFlip.loadFromHTML(container.querySelectorAll('.page'));
+            pageFlip.loadFromHTML(container.querySelectorAll('.page'));
 
-        // Update page indicator on flip
-        pageFlip.on('flip', () => {
+            pageFlip.on('flip', () => {
+                updatePageIndicator();
+            });
+
+            // Show overlay only after PageFlip has rendered — no black flash
+            overlay.classList.add('active');
             updatePageIndicator();
-        });
-
-        updatePageIndicator();
+        }, 80);
     }
 }
 

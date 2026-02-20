@@ -147,6 +147,8 @@ main {
     width: 100%;
 }
 
+.mobile-br { display: none; }
+
 h1 {
     font-family: 'sofia-pro', sans-serif;
     text-align: center;
@@ -681,6 +683,8 @@ h1 {
         font-size: 0.9rem;
         margin-bottom: 1rem;
     }
+
+    .mobile-br { display: inline; }
 
     /* Contact form - stack name fields */
     .form-name-row {
