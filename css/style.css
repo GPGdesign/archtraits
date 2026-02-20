@@ -614,7 +614,7 @@ h1 {
 #loader-logo {
     height: 65px;
     width: auto;
-    animation: revealLTR 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+    animation: revealLTR 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
 }
 
 /* Responsive */

@@ -2,7 +2,7 @@
 (function () {
     const loader = document.getElementById('loader');
     const startTime = Date.now();
-    const minDisplay = 2000;
+    const minDisplay = 2300;
 
     window.addEventListener('load', function () {
         const elapsed = Date.now() - startTime;
