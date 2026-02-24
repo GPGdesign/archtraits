@@ -90,7 +90,13 @@ function toggleMenu() {
     menu.classList.toggle('active');
 }
 
-function handleMenuClick(item) {
+const sectionPaths = {
+    Portfolio: '/',
+    Magazines: '/magazines',
+    Contact: '/contact'
+};
+
+function showSection(item, pushState) {
     const sections = {
         Portfolio: document.getElementById('portfolioPage'),
         Magazines: document.getElementById('magazinesPage'),
@@ -109,7 +115,30 @@ function handleMenuClick(item) {
             initPortfolioObserver();
         }
     }
+
+    if (pushState !== false) {
+        const path = sectionPaths[item] || '/';
+        history.pushState({ section: item }, '', path);
+    }
 }
+
+function handleMenuClick(item) {
+    showSection(item, true);
+}
+
+window.addEventListener('popstate', function (e) {
+    const item = (e.state && e.state.section) || 'Portfolio';
+    showSection(item, false);
+});
+
+// On initial load, show the section matching the current URL path
+(function () {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const initial = Object.keys(sectionPaths).find(k => sectionPaths[k] === path) || 'Portfolio';
+    showSection(initial, false);
+    // Replace the initial history entry with section state so popstate works
+    history.replaceState({ section: initial }, '', window.location.pathname);
+}());
 
 function initPortfolioObserver() {
     const rows = document.querySelectorAll('.editorial-scroll .ed-row');
