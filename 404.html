@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ARCHTRAITS</title>
+    <!--
+      GitHub Pages has no server-side rewrites, so a direct request for a
+      client-side route like /magazines 404s before our JS router ever runs.
+      This stashes the requested path and bounces to index.html, which
+      restores it via the sessionStorage.redirect script in index.html's head.
+      Technique: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+        sessionStorage.redirect = location.href;
+    </script>
+    <meta http-equiv="refresh" content="0;URL='/'">
+</head>
+<body>
+</body>
+</html>

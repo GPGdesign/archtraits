@@ -20,6 +20,17 @@
     <link rel="stylesheet" href="css/style.css?v=8">
     <link rel="preload" as="image" href="images/portfolio/1.webp">
     <link rel="preload" as="image" href="images/portfolio/1.1.webp">
+
+    <!-- GitHub Pages SPA redirect restoration: turns the ?/path stashed by 404.html back into a real URL before the router in js/script.js reads it -->
+    <script>
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        }());
+    </script>
 </head>
 <body>
     <!-- Loading screen -->
