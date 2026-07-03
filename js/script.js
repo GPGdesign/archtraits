@@ -25,7 +25,7 @@ let currentMagazine = 0;
 let zoomLevel = 1;
 let pageFlip = null;
 
-// Magazine data for 8 volumes (pages populated from images folder)
+// Magazine data for 9 volumes (pages populated from images folder)
 const magazines = [
     {
         title: 'Volume 1',
@@ -81,6 +81,13 @@ const magazines = [
         issue: 'Issue 8 • 2026',
         pages: [
             'images/ARCHTRAITS VOL 8 (1).webp','images/ARCHTRAITS VOL 8 (2).webp','images/ARCHTRAITS VOL 8 (3).webp','images/ARCHTRAITS VOL 8 (4).webp','images/ARCHTRAITS VOL 8 (5).webp','images/ARCHTRAITS VOL 8 (6).webp','images/ARCHTRAITS VOL 8 (7).webp','images/ARCHTRAITS VOL 8 (8).webp','images/ARCHTRAITS VOL 8 (9).webp','images/ARCHTRAITS VOL 8 (10).webp','images/ARCHTRAITS VOL 8 (11).webp','images/ARCHTRAITS VOL 8 (12).webp','images/ARCHTRAITS VOL 8 (13).webp','images/ARCHTRAITS VOL 8 (14).webp','images/ARCHTRAITS VOL 8 (15).webp','images/ARCHTRAITS VOL 8 (16).webp','images/ARCHTRAITS VOL 8 (17).webp','images/ARCHTRAITS VOL 8 (18).webp','images/ARCHTRAITS VOL 8 (19).webp','images/ARCHTRAITS VOL 8 (20).webp','images/ARCHTRAITS VOL 8 (21).webp','images/ARCHTRAITS VOL 8 (22).webp','images/ARCHTRAITS VOL 8 (23).webp','images/ARCHTRAITS VOL 8 (24).webp','images/ARCHTRAITS VOL 8 (25).webp','images/ARCHTRAITS VOL 8 (26).webp','images/ARCHTRAITS VOL 8 (27).webp','images/ARCHTRAITS VOL 8 (28).webp'
+        ]
+    },
+    {
+        title: 'Volume 9',
+        issue: 'Issue 9 • 2026',
+        pages: [
+            'images/ARCHTRAITS VOL 9 (1).webp','images/ARCHTRAITS VOL 9 (2).webp','images/ARCHTRAITS VOL 9 (3).webp','images/ARCHTRAITS VOL 9 (4).webp','images/ARCHTRAITS VOL 9 (5).webp','images/ARCHTRAITS VOL 9 (6).webp','images/ARCHTRAITS VOL 9 (7).webp','images/ARCHTRAITS VOL 9 (8).webp','images/ARCHTRAITS VOL 9 (9).webp','images/ARCHTRAITS VOL 9 (10).webp','images/ARCHTRAITS VOL 9 (11).webp','images/ARCHTRAITS VOL 9 (12).webp','images/ARCHTRAITS VOL 9 (13).webp','images/ARCHTRAITS VOL 9 (14).webp','images/ARCHTRAITS VOL 9 (15).webp','images/ARCHTRAITS VOL 9 (16).webp','images/ARCHTRAITS VOL 9 (17).webp','images/ARCHTRAITS VOL 9 (18).webp','images/ARCHTRAITS VOL 9 (19).webp','images/ARCHTRAITS VOL 9 (20).webp','images/ARCHTRAITS VOL 9 (21).webp','images/ARCHTRAITS VOL 9 (22).webp','images/ARCHTRAITS VOL 9 (23).webp','images/ARCHTRAITS VOL 9 (24).webp','images/ARCHTRAITS VOL 9 (25).webp','images/ARCHTRAITS VOL 9 (26).webp','images/ARCHTRAITS VOL 9 (27).webp','images/ARCHTRAITS VOL 9 (28).webp'
         ]
     }
 ];
