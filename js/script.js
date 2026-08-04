@@ -508,8 +508,39 @@ function showSection(item, pushState) {
 }
 
 function handleMenuClick(item) {
+    closeMobileNav();
     showSection(item, true);
 }
+
+function toggleMobileNav() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('navToggle');
+    const isOpen = nav.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+}
+
+function closeMobileNav() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('navToggle');
+    if (!nav || !toggle) return;
+    nav.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+}
+
+document.addEventListener('click', (e) => {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('navToggle');
+    if (!nav || !toggle || !nav.classList.contains('open')) return;
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+        closeMobileNav();
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMobileNav();
+});
 
 function openProject(slug, pushState) {
     const project = portfolioProjects.find(p => p.slug === slug);
@@ -753,7 +784,7 @@ window.addEventListener('popstate', function (e) {
 // On initial load, show the section (or project/magazine) matching the current URL path
 (function () {
     const path = decodeURIComponent(window.location.pathname.replace(/\/$/, '') || '/');
-    const projectMatch = path.match(/^\/images\/portfolio\/([a-z0-9-]+)$/i);
+    const projectMatch = path.match(/^\/images\/portfolio\/([\p{L}0-9-]+)$/iu);
 
     if (projectMatch && portfolioProjects.some(p => p.slug === projectMatch[1])) {
         openProject(projectMatch[1], false);

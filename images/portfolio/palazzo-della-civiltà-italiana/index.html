@@ -36,7 +36,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="stylesheet" href="css/style.css?v=26">
+    <link rel="stylesheet" href="css/style.css?v=27">
     <link rel="preload" as="image" href="images/portfolio/palazzo-della-civiltà-italiana/7.webp">
 
     <!-- Structured data (JSON-LD) -->
@@ -156,7 +156,13 @@
             <img src="images/ARCHTRAITS LOGO B.webp" alt="ARCHTRAITS Logo" class="logo-img">
         </a>
 
-        <nav class="main-nav">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav" onclick="toggleMobileNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav">
             <a href="/" class="nav-link" onclick="handleMenuClick('Home'); return false;">Home</a>
             <a href="/images/portfolio" class="nav-link" onclick="handleMenuClick('Portfolio'); return false;">Portfolio</a>
             <a href="/images/magazines" class="nav-link" onclick="handleMenuClick('Magazines'); return false;">Magazines</a>
@@ -471,6 +477,6 @@
         </div>
     </div>
 
-    <script src="js/script.js?v=21"></script>
+    <script src="js/script.js?v=23"></script>
 </body>
 </html>
