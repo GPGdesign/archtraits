@@ -410,8 +410,8 @@ renderPortfolioGrid();
 
 const sectionPaths = {
     Home: '/',
-    Portfolio: '/images/portfolio',
-    Magazines: '/images/magazines',
+    Portfolio: '/portfolio',
+    Magazines: '/magazines',
     About: '/about',
     Contact: '/contact'
 };
@@ -570,7 +570,7 @@ function openProject(slug, pushState) {
     `).join('');
     gallery.scrollLeft = 0;
 
-    const path = '/images/portfolio/' + slug;
+    const path = '/portfolio/' + slug;
     applySEO(
         project.name + ' - ARCHTRAITS Architecture Photography',
         project.name + ', ' + project.location + ' — architecture photography by ARCHTRAITS.',
@@ -784,7 +784,7 @@ window.addEventListener('popstate', function (e) {
 // On initial load, show the section (or project/magazine) matching the current URL path
 (function () {
     const path = decodeURIComponent(window.location.pathname.replace(/\/$/, '') || '/');
-    const projectMatch = path.match(/^\/images\/portfolio\/([\p{L}0-9-]+)$/iu);
+    const projectMatch = path.match(/^\/portfolio\/([\p{L}0-9-]+)$/iu);
 
     if (projectMatch && portfolioProjects.some(p => p.slug === projectMatch[1])) {
         openProject(projectMatch[1], false);
@@ -792,7 +792,7 @@ window.addEventListener('popstate', function (e) {
         return;
     }
 
-    const magazineMatch = path.match(/^\/images\/magazines\/(Archtraits Vol [1-9])$/i);
+    const magazineMatch = path.match(/^\/magazines\/(Archtraits Vol [1-9])$/i);
     const magazineIndex = magazineMatch ? magazines.findIndex(m => m.slug.toLowerCase() === magazineMatch[1].toLowerCase()) : -1;
 
     if (magazineIndex !== -1) {
@@ -938,7 +938,7 @@ function loadPageFlipLibrary() {
 
 function openReader(magazineIndex, pushState) {
     const magazine = magazines[magazineIndex];
-    const path = '/images/magazines/' + magazine.slug;
+    const path = '/magazines/' + magazine.slug;
     applySEO(
         magazine.title + ' - ARCHTRAITS Architecture Photography',
         magazine.issue + ' — ' + magazine.title + ', an ARCHTRAITS digital magazine capturing the beauty of architecture and the essence of human experience.',
